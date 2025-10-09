@@ -9,7 +9,7 @@ use CountryPack\Enum\Iso31661Numeric;
 class CountryDto
 {
     public function __construct(
-        public string           $name,
+        public ?string          $name,
         public Iso31661Alpha2   $iso31661Alpha2,
         public ?Iso31661Alpha3  $iso31661Alpha3,
         public ?Iso31661Numeric $iso31661Numeric,

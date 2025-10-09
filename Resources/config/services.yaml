@@ -6,3 +6,12 @@ services:
 
   CountryPack\:
     resource: '../../src/'
+
+  CountryPack\Contracts\CountryNameMapperInterface:
+    class: 'CountryPack\Mapper\CountryEnglishNameMapper'
+
+  CountryPack\Contracts\CountryImageMapperInterface:
+    class: 'CountryPack\Mapper\CountryImageMapper'
+
+  CountryPack\Contracts\IsoCodeMapperInterface:
+    class: 'CountryPack\Mapper\IsoCodeMapper'
