@@ -125,6 +125,7 @@ enum Iso31661Alpha3: string
     case KHM = 'KHM';
     case KIR = 'KIR';
     case KNA = 'KNA';
+    case KOR = 'KOR';
     case KWT = 'KWT';
     case LAO = 'LAO';
     case LBN = 'LBN';

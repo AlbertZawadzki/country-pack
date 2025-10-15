@@ -131,6 +131,7 @@ class CountryEnglishNameMapper implements CountryNameMapperInterface
             Iso31661Alpha2::KH => 'Cambodia',
             Iso31661Alpha2::KI => 'Kiribati',
             Iso31661Alpha2::KN => 'Saint Kitts and Nevis',
+            Iso31661Alpha2::KR => 'South Korea',
             Iso31661Alpha2::KW => 'Kuwait',
             Iso31661Alpha2::LA => 'Laos',
             Iso31661Alpha2::LB => 'Lebanon',

@@ -125,6 +125,7 @@ enum Iso31661Alpha2: string
     case KH = 'KH';
     case KI = 'KI';
     case KN = 'KN';
+    case KR = 'KR';
     case KW = 'KW';
     case LA = 'LA';
     case LB = 'LB';
