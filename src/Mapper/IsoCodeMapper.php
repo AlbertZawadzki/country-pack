@@ -320,6 +320,7 @@ class IsoCodeMapper implements IsoCodeMapperInterface
             [Iso31661Alpha2::VU, Iso31661Alpha3::VUT, Iso31661Numeric::_548],
             [Iso31661Alpha2::WF, Iso31661Alpha3::WLF, Iso31661Numeric::_876],
             [Iso31661Alpha2::WS, Iso31661Alpha3::WSM, Iso31661Numeric::_882],
+            [Iso31661Alpha2::XK, Iso31661Alpha3::XKX, Iso31661Numeric::_926],
             [Iso31661Alpha2::YE, Iso31661Alpha3::YEM, Iso31661Numeric::_887],
             [Iso31661Alpha2::YT, Iso31661Alpha3::MYT, Iso31661Numeric::_175],
             [Iso31661Alpha2::ZA, Iso31661Alpha3::ZAF, Iso31661Numeric::_710],

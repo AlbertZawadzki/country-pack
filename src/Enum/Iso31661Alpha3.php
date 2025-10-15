@@ -248,6 +248,7 @@ enum Iso31661Alpha3: string
     case VUT = 'VUT';
     case WLF = 'WLF';
     case WSM = 'WSM';
+    case XKX = 'XKX';
     case YEM = 'YEM';
     case ZAF = 'ZAF';
     case ZMB = 'ZMB';

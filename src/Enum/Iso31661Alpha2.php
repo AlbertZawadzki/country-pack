@@ -248,6 +248,7 @@ enum Iso31661Alpha2: string
     case VU = 'VU';
     case WF = 'WF';
     case WS = 'WS';
+    case XK = 'XK';
     case YE = 'YE';
     case ZA = 'ZA';
     case ZM = 'ZM';

@@ -254,6 +254,7 @@ class CountryEnglishNameMapper implements CountryNameMapperInterface
             Iso31661Alpha2::VU => 'Vanuatu',
             Iso31661Alpha2::WF => 'Wallis and Futuna',
             Iso31661Alpha2::WS => 'Samoa',
+            Iso31661Alpha2::XK => 'Kosowo',
             Iso31661Alpha2::YE => 'Yemen',
             Iso31661Alpha2::ZA => 'South Africa',
             Iso31661Alpha2::ZM => 'Zambia',
