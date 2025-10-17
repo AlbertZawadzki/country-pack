@@ -12,8 +12,8 @@ class CountryImageMapper implements CountryImageMapperInterface
         return match ($isoCode) {
             Iso31661Alpha2::XX,
             Iso31661Alpha2::T1
-                => null,
-            default => sprintf('https://flagcdn.com/w640/%s.png', $isoCode->name),
+            => null,
+            default => sprintf('https://flagcdn.com/w640/%s.png', strtolower($isoCode->name)),
         };
     }
 }
