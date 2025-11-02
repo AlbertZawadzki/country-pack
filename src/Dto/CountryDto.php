@@ -6,7 +6,7 @@ use CountryPack\Enum\Iso31661Alpha2;
 use CountryPack\Enum\Iso31661Alpha3;
 use CountryPack\Enum\Iso31661Numeric;
 
-class CountryDto
+readonly class CountryDto
 {
     public function __construct(
         public ?string          $name,
