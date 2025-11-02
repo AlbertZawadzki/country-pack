@@ -2,19 +2,15 @@
 
 namespace CountryPack\Provider;
 
-use CountryPack\Contracts\CountryImageMapperInterface;
-use CountryPack\Contracts\CountryNameMapperInterface;
-use CountryPack\Contracts\IsoCodeMapperInterface;
 use CountryPack\Dto\CountryDto;
 use CountryPack\Enum\Iso31661Alpha2;
+use CountryPack\Factory\CountryFactory;
 use Generic\GenericCollection;
 
 class CountryProvider
 {
     public function __construct(
-        private readonly CountryNameMapperInterface  $countryNameMapper,
-        private readonly CountryImageMapperInterface $countryImageMapper,
-        private readonly IsoCodeMapperInterface      $isoCodeMapper,
+        private readonly CountryFactory $countryFactory,
     )
     {
     }
@@ -33,18 +29,7 @@ class CountryProvider
                 continue;
             }
 
-            $name = $this->countryNameMapper->mapIso31661Alpha2ToName($iso31661Alpha2);
-            $iso31661Alpha3 = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Alpha3($iso31661Alpha2);
-            $iso31661Numeric = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Numeric($iso31661Alpha2);
-            $imagePath = $this->countryImageMapper->mapIso31661Alpha2ToImagePath($iso31661Alpha2);
-
-            $country = new CountryDto(
-                $name,
-                $iso31661Alpha2,
-                $iso31661Alpha3,
-                $iso31661Numeric,
-                $imagePath,
-            );
+            $country = $this->countryFactory->createFromIso31661Alpha2($iso31661Alpha2);
             $countriesCollection->add($country);
         }
 
@@ -53,17 +38,6 @@ class CountryProvider
 
     public function getByIso31661Alpha2(Iso31661Alpha2 $iso31661Alpha2): CountryDto
     {
-        $name = $this->countryNameMapper->mapIso31661Alpha2ToName($iso31661Alpha2);
-        $iso31661Alpha3 = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Alpha3($iso31661Alpha2);
-        $iso31661Numeric = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Numeric($iso31661Alpha2);
-        $imagePath = $this->countryImageMapper->mapIso31661Alpha2ToImagePath($iso31661Alpha2);
-
-        return new CountryDto(
-            $name,
-            $iso31661Alpha2,
-            $iso31661Alpha3,
-            $iso31661Numeric,
-            $imagePath,
-        );
+        return $this->countryFactory->createFromIso31661Alpha2($iso31661Alpha2);
     }
 }
