@@ -11,6 +11,7 @@ readonly class CountryDto
     public function __construct(
         public ?string          $name,
         public ?CurrencyDto     $currency,
+        public ?string          $dialCode,
         public Iso31661Alpha2   $iso31661Alpha2,
         public ?Iso31661Alpha3  $iso31661Alpha3,
         public ?Iso31661Numeric $iso31661Numeric,

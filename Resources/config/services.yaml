@@ -19,6 +19,9 @@ services:
   CountryPack\Contracts\CountryNameMapperInterface:
     class: 'CountryPack\Mapper\CountryEnglishNameMapper'
 
+  CountryPack\Contracts\CountryDialCodeMapperInterface:
+    class: 'CountryPack\Mapper\CountryDialCodeMapper'
+
   CountryPack\Contracts\CountryImageMapperInterface:
     class: 'CountryPack\Mapper\CountryImageMapper'
 

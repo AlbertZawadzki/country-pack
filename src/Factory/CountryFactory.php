@@ -3,6 +3,7 @@
 namespace CountryPack\Factory;
 
 use CountryPack\Contracts\CountryCurrencyMapperInterface;
+use CountryPack\Contracts\CountryDialCodeMapperInterface;
 use CountryPack\Contracts\CountryImageMapperInterface;
 use CountryPack\Contracts\CountryNameMapperInterface;
 use CountryPack\Contracts\IsoCodeMapperInterface;
@@ -14,6 +15,7 @@ final class CountryFactory
 
     public function __construct(
         private readonly CountryNameMapperInterface     $countryNameMapper,
+        private readonly CountryDialCodeMapperInterface $countryDialCodeMapper,
         private readonly CountryCurrencyMapperInterface $countryCurrencyMapper,
         private readonly CountryImageMapperInterface    $countryImageMapper,
         private readonly IsoCodeMapperInterface         $isoCodeMapper,
@@ -31,6 +33,7 @@ final class CountryFactory
         }
 
         $name = $this->countryNameMapper->mapIso31661Alpha2ToName($iso31661Alpha2);
+        $dialCode = $this->countryDialCodeMapper->mapIso31661Alpha2ToDialCode($iso31661Alpha2);
         $iso31661Alpha3 = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Alpha3($iso31661Alpha2);
         $iso31661Numeric = $this->isoCodeMapper->mapIso31661Alpha2ToIso31661Numeric($iso31661Alpha2);
         $imagePath = $this->countryImageMapper->mapIso31661Alpha2ToImagePath($iso31661Alpha2);
@@ -38,6 +41,7 @@ final class CountryFactory
         return new CountryDto(
             $name,
             $currency,
+            $dialCode,
             $iso31661Alpha2,
             $iso31661Alpha3,
             $iso31661Numeric,
