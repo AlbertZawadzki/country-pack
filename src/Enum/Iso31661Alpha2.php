@@ -45,6 +45,7 @@ enum Iso31661Alpha2: string
     case CF = 'CF';
     case CA = 'CA';
     case CC = 'CC';
+    case CD = 'CD';
     case CH = 'CH';
     case CL = 'CL';
     case CN = 'CN';

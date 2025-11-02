@@ -116,6 +116,7 @@ class Iso3166CodeMapper implements IsoCodeMapperInterface
             [Iso31661Alpha2::BZ, Iso31661Alpha3::BLZ, Iso31661Numeric::_084],
             [Iso31661Alpha2::CA, Iso31661Alpha3::CAN, Iso31661Numeric::_124],
             [Iso31661Alpha2::CC, Iso31661Alpha3::CCK, Iso31661Numeric::_166],
+            [Iso31661Alpha2::CD, Iso31661Alpha3::COD, Iso31661Numeric::_180],
             [Iso31661Alpha2::CF, Iso31661Alpha3::CAF, Iso31661Numeric::_140],
             [Iso31661Alpha2::CG, Iso31661Alpha3::COG, Iso31661Numeric::_178],
             [Iso31661Alpha2::CH, Iso31661Alpha3::CHE, Iso31661Numeric::_756],

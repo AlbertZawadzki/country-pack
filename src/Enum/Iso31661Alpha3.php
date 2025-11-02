@@ -50,6 +50,7 @@ enum Iso31661Alpha3: string
     case CHN = 'CHN';
     case CIV = 'CIV';
     case CMR = 'CMR';
+    case COD = 'COD';
     case COG = 'COG';
     case COK = 'COK';
     case COL = 'COL';

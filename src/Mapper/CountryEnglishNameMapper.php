@@ -51,6 +51,7 @@ class CountryEnglishNameMapper implements CountryNameMapperInterface
             Iso31661Alpha2::CF => 'Central African Republic',
             Iso31661Alpha2::CA => 'Canada',
             Iso31661Alpha2::CC => 'Cocos (Keeling) Islands',
+            Iso31661Alpha2::CD => 'Democratic Republic of the Congo',
             Iso31661Alpha2::CH => 'Switzerland',
             Iso31661Alpha2::CL => 'Chile',
             Iso31661Alpha2::CN => 'China',

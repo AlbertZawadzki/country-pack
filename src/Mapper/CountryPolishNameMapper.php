@@ -51,6 +51,7 @@ class CountryPolishNameMapper implements CountryNameMapperInterface
             Iso31661Alpha2::CF => 'Republika Środkowoafrykańska',
             Iso31661Alpha2::CA => 'Kanada',
             Iso31661Alpha2::CC => 'Wyspy Kokosowe',
+            Iso31661Alpha2::CD => 'Demokratyczna Republika Konga',
             Iso31661Alpha2::CH => 'Szwajcaria',
             Iso31661Alpha2::CL => 'Chile',
             Iso31661Alpha2::CN => 'Chiny',
