@@ -21,6 +21,7 @@ final class CityFactory
         return new CityDto(
             $stateDto,
             $name,
+            (bool)$cityData['capital'],
             null,
             null,
         );
