@@ -2,12 +2,12 @@
 
 namespace CountryPack\Mapper;
 
-use CountryPack\Contracts\IsoCodeMapperInterface;
+use CountryPack\Contracts\Iso3166CodeMapperInterface;
 use CountryPack\Enum\Iso31661Alpha2;
 use CountryPack\Enum\Iso31661Alpha3;
 use CountryPack\Enum\Iso31661Numeric;
 
-class Iso3166CodeMapper implements IsoCodeMapperInterface
+class Iso3166CodeMapper implements Iso3166CodeMapperInterface
 {
     private array $alpha2Map = [];
 

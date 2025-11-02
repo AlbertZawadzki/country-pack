@@ -6,7 +6,7 @@ use CountryPack\Contracts\CountryCurrencyMapperInterface;
 use CountryPack\Contracts\CountryDialCodeMapperInterface;
 use CountryPack\Contracts\CountryImageMapperInterface;
 use CountryPack\Contracts\CountryNameMapperInterface;
-use CountryPack\Contracts\IsoCodeMapperInterface;
+use CountryPack\Contracts\Iso3166CodeMapperInterface;
 use CountryPack\Dto\CountryDto;
 use CountryPack\Enum\Iso31661Alpha2;
 
@@ -18,7 +18,7 @@ final class CountryFactory
         private readonly CountryDialCodeMapperInterface $countryDialCodeMapper,
         private readonly CountryCurrencyMapperInterface $countryCurrencyMapper,
         private readonly CountryImageMapperInterface    $countryImageMapper,
-        private readonly IsoCodeMapperInterface         $isoCodeMapper,
+        private readonly Iso3166CodeMapperInterface     $isoCodeMapper,
         private readonly CurrencyFactory                $currencyFactory,
     )
     {

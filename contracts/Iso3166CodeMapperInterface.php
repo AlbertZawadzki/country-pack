@@ -6,7 +6,7 @@ use CountryPack\Enum\Iso31661Alpha2;
 use CountryPack\Enum\Iso31661Alpha3;
 use CountryPack\Enum\Iso31661Numeric;
 
-interface IsoCodeMapperInterface
+interface Iso3166CodeMapperInterface
 {
     public function mapIso31661Alpha2ToIso31661Alpha3(Iso31661Alpha2 $isoCode): ?Iso31661Alpha3;
 

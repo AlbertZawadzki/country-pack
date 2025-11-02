@@ -31,5 +31,5 @@ services:
   CountryPack\Contracts\CountryImageMapperInterface:
     class: 'CountryPack\Mapper\CountryImageMapper'
 
-  CountryPack\Contracts\IsoCodeMapperInterface:
-    class: 'CountryPack\Mapper\IsoCodeMapper'
+  CountryPack\Contracts\Iso3166CodeMapperInterface:
+    class: 'CountryPack\Mapper\Iso3166CodeMapper'
