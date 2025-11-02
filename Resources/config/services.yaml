@@ -7,11 +7,14 @@ services:
   CountryPack\:
     resource: '../../src/'
 
+  CountryPack\Contracts\StateNameMapperInterface:
+    class: 'CountryPack\Mapper\StateEnglishNameMapper'
+
   CountryPack\Contracts\CountryCurrencyMapperInterface:
     class: 'CountryPack\Mapper\CountryCurrencyMapper'
 
   CountryPack\Contracts\CurrencyNameMapperInterface:
-    class: 'CountryPack\Mapper\CurrencyNameMapper'
+    class: 'CountryPack\Mapper\CurrencyEnglishNameMapper'
 
   CountryPack\Contracts\CurrencySignMapperInterface:
     class: 'CountryPack\Mapper\CurrencySignMapper'
