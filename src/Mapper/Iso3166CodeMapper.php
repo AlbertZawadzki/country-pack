@@ -7,7 +7,7 @@ use CountryPack\Enum\Iso31661Alpha2;
 use CountryPack\Enum\Iso31661Alpha3;
 use CountryPack\Enum\Iso31661Numeric;
 
-class IsoCodeMapper implements IsoCodeMapperInterface
+class Iso3166CodeMapper implements IsoCodeMapperInterface
 {
     private array $alpha2Map = [];
 
