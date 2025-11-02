@@ -7,6 +7,9 @@ services:
   CountryPack\:
     resource: '../../src/'
 
+  CountryPack\Contracts\CityNameMapperInterface:
+    class: 'CountryPack\Mapper\CityEnglishNameMapper'
+
   CountryPack\Contracts\StateNameMapperInterface:
     class: 'CountryPack\Mapper\StateEnglishNameMapper'
 
