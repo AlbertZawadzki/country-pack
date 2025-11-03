@@ -22,8 +22,8 @@ final class CityFactory
             $stateDto,
             $name,
             (bool)$cityData['capital'],
-            null,
-            null,
+            $cityData['latitude'] ?? null,
+            $cityData['longitude'] ?? null,
         );
     }
 }
