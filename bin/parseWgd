@@ -1,0 +1,65 @@
+#!/usr/bin/env php
+<?php
+
+use CountryPack\Enum\Iso31661Alpha2;
+use CountryPack\Enum\LocationNameType;
+use CountryPack\Enum\LocationType;
+use Generic\Coder\CsvDecoder;
+use Generic\Coder\CsvEncoder;
+
+include './vendor/autoload.php';
+
+$cases = Iso31661Alpha2::cases();
+$csvDecoder = new CsvDecoder();
+$csvEncoder = new CsvEncoder();
+
+foreach ($cases as $case) {
+    echo "Parsing $case->value" . PHP_EOL;
+
+    $sourceFilePath = "./Resources/data/world-geo-dataset/" . strtoupper($case->value) . ".txt";
+    if (!file_exists($sourceFilePath)) {
+        echo "No file" . PHP_EOL;
+        continue;
+    }
+
+    echo "Normalizing $case->value" . PHP_EOL;
+    $fileData = file($sourceFilePath);
+    $wgdItems = $csvDecoder->decodeCsv($fileData, "\t");
+    $newItems = [
+        [
+            'wgdPlaceId',
+            'wgdId',
+            'type',
+            'name',
+            'fullName',
+            'nameType',
+            'latitude',
+            'longitude',
+            'administrationGroup',
+            'isHistorical',
+            'isCapital',
+        ]
+    ];
+
+    foreach ($wgdItems as $wgdItem) {
+        $newItems[] = [
+            isset($wgdItem['ufi']) ? (int)$wgdItem['ufi'] : null, // wgdPlaceId
+            isset($wgdItem['uni']) ? (int)$wgdItem['uni'] : null, // wgdId
+            LocationType::fromWgdType($wgdItem['fc'])->value, // type
+            $wgdItem['full_name'], // name
+            $wgdItem['full_nm_nd'], // originalName
+            isset($wgdItem['nt']) ? LocationNameType::fromWgdType($wgdItem['nt'])->value : LocationNameType::UNKNOWN->value, // nameType
+            (float)$wgdItem['lat_dd'], // latitude
+            (float)$wgdItem['long_dd'], // longitude
+            $wgdItem['adm1'], // administrationGroup
+            (!empty($wgdItem['term_dt_f']) || !empty($wgdItem['term_dt_n'])), // isHistorical
+            isset($wgdItem['desig_cd']) ? $wgdItem['desig_cd'] === 'PCLIX' : null, // isCapital
+        ];
+    }
+
+    echo "Saving $case->value" . PHP_EOL;
+    $encodedCsv = $csvEncoder->encodeCsv($newItems, ',');
+    $newFilePath = "./Resources/data/locations/" . strtolower($case->value) . ".csv";
+    file_put_contents($newFilePath, $encodedCsv);
+    echo "Saved $case->value" . PHP_EOL;
+}
