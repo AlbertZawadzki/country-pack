@@ -18,11 +18,10 @@ final class LocationFactory
     public function createFromData(array $locationData): LocationDto
     {
         $name = $this->locationNameMapper->mapToName($locationData);
-        var_dump($locationData);
 
         return new LocationDto(
-            $locationData['wgdPlaceId'],
-            $locationData['wgdId'],
+            $locationData['wgdPlaceId'] ?: null,
+            $locationData['wgdId'] ?: null,
             LocationType::tryFrom($locationData['type']),
             $name,
             $locationData['fullName'],

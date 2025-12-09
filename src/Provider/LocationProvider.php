@@ -5,7 +5,7 @@ namespace CountryPack\Provider;
 use CountryPack\Dto\LocationDto;
 use CountryPack\Enum\Iso31661Alpha2;
 use CountryPack\Factory\LocationFactory;
-use Generic\Decoder\CsvDecoder;
+use Generic\Coder\CsvDecoder;
 use Generic\GenericCollection;
 
 class LocationProvider
@@ -19,17 +19,32 @@ class LocationProvider
 
     private function getCsvFileContent(Iso31661Alpha2 $iso31661Alpha2): array
     {
-        $fileName = strtolower($iso31661Alpha2->value . '.csv');
-        $filePath = __DIR__ . "/../../Resources/data/locations/{$fileName}";
-
-        if (!file_exists($filePath) || !is_readable($filePath)) {
+        $outputDir = __DIR__ . "/../../Resources/data/locations/" . strtolower($iso31661Alpha2->value);
+        if (!is_dir($outputDir)) {
             return [];
         }
 
-        $data = file($filePath);
+        $allData = [];
+        $csvFiles = glob($outputDir . '/*.csv');
+        sort($csvFiles, SORT_NATURAL);
 
-        return $this->csvDecoder->decodeCsv($data);
+        foreach ($csvFiles as $filePath) {
+            if (!is_readable($filePath)) {
+                continue;
+            }
+
+            $fileLines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            if (empty($fileLines)) {
+                continue;
+            }
+
+            $decoded = $this->csvDecoder->decodeCsv($fileLines);
+            $allData = array_merge($allData, $decoded);
+        }
+
+        return $allData;
     }
+
 
     /** @return GenericCollection<LocationDto> */
     public function getAllLocationsForCountry(Iso31661Alpha2 $iso31661Alpha2): GenericCollection
