@@ -1,0 +1,60 @@
+#!/usr/bin/env php
+<?php
+
+use CountryPack\Enum\Iso31661Alpha2;
+
+include './vendor/autoload.php';
+
+$cases = Iso31661Alpha2::cases();
+$maxLines = 100000;
+
+foreach ($cases as $case) {
+    echo "Parsing {$case->value}" . PHP_EOL;
+
+    $inputFile = "./Resources/data/locations-unsplitted/" . strtolower($case->value) . ".csv";
+    if (!file_exists($inputFile)) {
+        echo "File not found: $inputFile" . PHP_EOL;
+        continue;
+    }
+
+    $handle = fopen($inputFile, 'r');
+    if (!$handle) {
+        echo "Failed to open file: $inputFile" . PHP_EOL;
+        continue;
+    }
+
+    $header = fgets($handle);
+    if ($header === false) {
+        echo "Empty file: $inputFile" . PHP_EOL;
+        fclose($handle);
+        continue;
+    }
+
+    $outputDir = "./Resources/data/locations/" . strtolower($case->value);
+    if (!is_dir($outputDir)) {
+        mkdir($outputDir, 0777, true);
+    }
+
+    $fileIndex = 1;
+    $lineCount = 0;
+    $outputHandle = fopen("$outputDir/{$fileIndex}.csv", 'w');
+    fwrite($outputHandle, $header);
+
+    while (($line = fgets($handle)) !== false) {
+        fwrite($outputHandle, $line);
+        $lineCount++;
+
+        if ($lineCount >= $maxLines) {
+            fclose($outputHandle);
+            $fileIndex++;
+            $lineCount = 0;
+            $outputHandle = fopen("$outputDir/{$fileIndex}.csv", 'w');
+            fwrite($outputHandle, $header);
+        }
+    }
+
+    fclose($handle);
+    fclose($outputHandle);
+
+    echo "Finished splitting {$case->value}" . PHP_EOL;
+}

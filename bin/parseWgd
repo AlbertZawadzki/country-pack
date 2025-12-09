@@ -59,7 +59,7 @@ foreach ($cases as $case) {
 
     echo "Saving $case->value" . PHP_EOL;
     $encodedCsv = $csvEncoder->encodeCsv($newItems, ',');
-    $newFilePath = "./Resources/data/locations/" . strtolower($case->value) . ".csv";
+    $newFilePath = "./Resources/data/locations-unsplitted/" . strtolower($case->value) . ".csv";
     file_put_contents($newFilePath, $encodedCsv);
     echo "Saved $case->value" . PHP_EOL;
 }
