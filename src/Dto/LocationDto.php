@@ -12,7 +12,7 @@ readonly class LocationDto
         public ?int             $wgdId,
         public LocationType     $type,
         public string           $name,
-        public string           $fullName,
+        public string           $originalName,
         public LocationNameType $nameType,
         public ?float           $latitude,
         public ?float           $longitude,
