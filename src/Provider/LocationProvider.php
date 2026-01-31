@@ -10,11 +10,13 @@ use Generic\GenericCollection;
 
 class LocationProvider
 {
+    private CsvDecoder $csvDecoder;
+
     public function __construct(
         private readonly LocationFactory $locationFactory,
-        private readonly CsvDecoder      $csvDecoder,
     )
     {
+        $this->csvDecoder = new CsvDecoder();
     }
 
     private function getCsvFileContent(Iso31661Alpha2 $iso31661Alpha2): array
